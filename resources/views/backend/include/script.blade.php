@@ -15,7 +15,7 @@
     <script src="{{ asset('backend') }}/app-assets/js/scripts/pages/dashboard-ecommerce.js"></script>
     <!-- END: Page JS-->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
 
     <script>
         $(window).on('load', function() {
@@ -65,4 +65,38 @@
         });
     </script>
 
+<script>
+    $(document).ready(function(){
+        $('.data_table').dataTable({
+            "bProcessing": false,
+            "sAutoWidth": false,
+            "bDestroy":false,
+            "bSort":true,
+            "sPaginationType": "bootstrap", // full_numbers
+            // "iDisplayStart ": 10,
+            // "iDisplayLength": 10,
+            "bPaginate": false, //hide/show pagination
+            "bFilter": true, //hide/show Search bar
+            "bInfo": false, // hide/show showing entries
+        });
+
+        $('.data_table--without-sort').dataTable({
+            "bProcessing": false,
+            "sAutoWidth": false,
+            "bDestroy":false,
+            "bSort":false,
+            "sPaginationType": "bootstrap", // full_numbers
+            // "iDisplayStart ": 10,
+            // "iDisplayLength": 10,
+            "bPaginate": false, //hide/show pagination
+            "bFilter": true, //hide/show Search bar
+            "bInfo": false, // hide/show showing entries
+        });
+    })
+</script>
+
+
+
     @yield('js')
+
+   

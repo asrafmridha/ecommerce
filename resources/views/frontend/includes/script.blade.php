@@ -19,6 +19,9 @@
     <!-- BEGIN: Page JS-->
     <script src="{{ asset('frontend') }}/app-assets/js/scripts/pages/app-ecommerce.js"></script>
     <!-- END: Page JS-->
+    {{-- my js  --}}
+    <script src="{{ asset('frontend') }}/myjs/product.js"></script>
+
 
     <script>
         $(window).on('load', function() {

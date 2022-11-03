@@ -56,7 +56,7 @@
                         @enderror
                     </div>
 
-                    <div class="col-12">
+                    {{-- <div class="col-12">
                         <div class="form-group">
                             <label for="product_title"> {{ __('Product Title') }} <span class="text-danger">*</span></label>
                             <input type="text" id="product_title" class="form-control" name="product_title" placeholder="Enter Product Title" value="{{ old('product_title') }}" />
@@ -68,7 +68,7 @@
                                 </div>
                             </div>
                         @enderror
-                    </div>
+                    </div> --}}
 
                     <div class="col-12">
                         <div class="form-group">
@@ -89,7 +89,7 @@
                     <div class="col-12">
                         <div class="form-group">
                             <label for="product_price"> {{ __('Product Price') }} <span class="text-danger">*</span></label>
-                            <input type="number" id="product_price" class="form-control" name="product_price" placeholder="Enter Product Price" value="{{ old('product_price') }}" />
+                            <input min="0" type="number" id="product_price" class="form-control" name="product_price" placeholder="Enter Product Price" value="{{ old('product_price') }}" />
                         </div>
                         @error('product_price')
                             <div class="alert alert-danger">
@@ -117,6 +117,29 @@
                             </div>
                         @enderror
                     </div>
+
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="star"> {{ __('Product star') }} <span class="text-danger">*</span></label>
+                            <select class="form-control" name="star">
+                                <option value="">-----Select star-----</option>
+                               <option value="1"> 1</option>
+                               <option value="2"> 2</option> 
+                               <option value="3"> 3</option> 
+                               <option value="4"> 4</option> 
+                               <option value="5"> 5</option> 
+                            </select>
+                        </div>
+                        @error('star')
+                            <div class="alert alert-danger">
+                                <div class="alert-body">
+                                    {{ $message }}
+                                </div>
+                            </div>
+                        @enderror
+                    </div>
+
+                    
 
                     <div class="col-12">
                     <button type="submit" class="form-control mt-1 btn-purchaseAdd btn btn-primary"> Save</button>

@@ -37,7 +37,12 @@ Route::get('/checkout',[FrontendController::class,'checkout'])->name('checkout')
 Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
     Route::get('/dashboard',[AdminController::class,'index'])->name('dashboard');
 
+
+
+    
     Route::resource('product', ProductController::class);
+    Route::get('product/datefilter',[ProductController::class,'dateFilter'])->name('product.dateFilter');
+    Route::get('product/massdelete',[ProductController::class,'mass_delete'])->name('product.mass.delete');
 
 
 
