@@ -46,15 +46,13 @@
           
 
 
-            <li class=" nav-item"><a class=" @yield('trust') d-flex align-items-center" href="#"><i data-feather='sunset'></i><span class="menu-title text-truncate" data-i18n="Service">Trust Us</span></a>
+            <li class=" nav-item"><a class=" @yield('product') d-flex align-items-center" href="#"><i data-feather='sunset'></i><span class="menu-title text-truncate" data-i18n="Service">Product</span></a>
                 <ul class="menu-content">
-                    <li><a  class="d-flex align-items-center" href=""><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Create</span></a>
+                    <li><a  class="d-flex align-items-center" href="{{ route('product.create') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Create</span></a>
                     </li>
 
-                    <li><a  class="d-flex align-items-center" href=""><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">List</span></a>
-                    </li>
-                   
-                
+                    <li><a  class="d-flex align-items-center" href="{{ route('product.index') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">List</span></a>
+                    </li>          
                 </ul>
             </li>
            

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('subcategory_id')->nullable();
             $table->string('product_name')->nullable();
             $table->string('slug')->nullable();
+            $table->string('product_title')->nullable();
             $table->integer('product_code')->nullable();
             $table->float('discount')->nullable();
             $table->float('discount_price')->nullable();

@@ -15,6 +15,8 @@
     <script src="{{ asset('backend') }}/app-assets/js/scripts/pages/dashboard-ecommerce.js"></script>
     <!-- END: Page JS-->
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <script>
         $(window).on('load', function() {
             if (feather) {
@@ -25,3 +27,42 @@
             }
         })
     </script>
+
+    <!-- Toastr Message Script-->
+    <script>
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": true,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "3000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+    
+        $(window).on("load", function(){
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    toastr.error('{{ $error }}');
+                @endforeach
+            @endif
+            
+            @if(session()->get('error'))
+                toastr.error('{{ session()->get('error') }}');
+            @endif
+            
+            @if(session()->get('success'))
+                toastr.success('{{ session()->get('success') }}');
+            @endif
+        });
+    </script>
+
+    @yield('js')
