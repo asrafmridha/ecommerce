@@ -21,6 +21,7 @@
     <!-- END: Page JS-->
     {{-- my js  --}}
     <script src="{{ asset('frontend') }}/myjs/product.js"></script>
+    <script src="{{ asset('frontend') }}/app-assets/js/core/product.js"></script>
 
 
     <script>

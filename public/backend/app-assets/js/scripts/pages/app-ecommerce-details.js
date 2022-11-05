@@ -55,15 +55,15 @@ $(function () {
     btnCart.on('click', function (e) {
       var $this = $(this),
         addToCart = $this.find('.add-to-cart');
-      if (addToCart.length > 0) {
-        e.preventDefault();
-        addToCart.text('View In Cart').removeClass('add-to-cart').addClass('view-in-cart');
-        $this.attr('href', checkout);
-        toastr['success']('', 'Added Item In Your Cart 🛒', {
-          closeButton: true,
-          tapToDismiss: false
-        });
-      }
+      // if (addToCart.length > 0) {
+      //   e.preventDefault();
+      //   addToCart.text('View In Cart').removeClass('add-to-cart').addClass('view-in-cart');
+      //   $this.attr('href', checkout);
+      //    toastr['success']('', 'Added Item In Your Cart 🛒', {
+      //     closeButton: true,
+      //     tapToDismiss: false
+      //    });
+      // }
     });
   }
 

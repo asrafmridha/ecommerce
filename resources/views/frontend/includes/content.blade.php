@@ -95,7 +95,7 @@
                 @foreach ($product as $product)
                     <div class="card ecommerce-card">
                         <div class="item-img text-center">
-                            <a href="app-ecommerce-details.html">
+                            <a href="{{ route('details',$product->slug) }}">
                                 <img class="img-fluid card-img-top" src="{{ asset('uploads/product/'.$product->image) }}" alt="img-placeholder" /></a>
                         </div>
                         <div class="card-body">
@@ -122,11 +122,7 @@
                                 <span class="card-text item-company">By <a href="javascript:void(0)" class="company-name">Apple</a></span>
                             </h6>
                             <p class="card-text item-description">
-                                On Retina display that never sleeps, so it’s easy to see the time and other important information, without
-                                raising or tapping the display. New location features, from a built-in compass to current elevation, help users
-                                better navigate their day, while international emergency calling1 allows customers to call emergency services
-                                directly from Apple Watch in over 150 countries, even without iPhone nearby. Apple Watch Series 5 is available
-                                in a wider range of materials, including aluminium, stainless steel, ceramic and an all-new titanium.
+                                {{ $product->short_description }}
                             </p>
                         </div>
                         <div class="item-options text-center">
@@ -139,9 +135,9 @@
                                 <i data-feather="heart"></i>
                                 <span>Wishlist</span>
                             </a>
-                            <button href="javascript:void(0)" class="btn btn-primary btn-cart">
+                            <button id="" value="{{ $product->id }}"  class="btn btn-primary btn-cart addtocart">
                                 <i data-feather="shopping-cart"></i>
-                                <span class="add-to-cart">Add to cart</span>
+                                <span  class="add-to-cart">Add to cart</span>
                             </button>
                         </div>
                     </div>
@@ -457,14 +453,6 @@
 </div>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<script>
-jQuery(document).ready(function(){
-
-alert ('hlw');
-
-});
 
 
-</script>
+

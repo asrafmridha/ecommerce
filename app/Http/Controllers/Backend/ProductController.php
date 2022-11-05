@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -63,6 +64,7 @@ class ProductController extends Controller
         $product->status=$request->status;
         $product->star=$request->star;
         $product->image = $image_name;
+        $product->slug=Str::slug($request->product_name);
 
         $product->save();
         return redirect()->route('product.index')->withSuccess("Prdouct Added Successfully");

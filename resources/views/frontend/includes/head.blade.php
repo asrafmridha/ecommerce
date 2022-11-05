@@ -5,6 +5,7 @@
     <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title')</title>
     
@@ -18,6 +19,21 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/vendors/css/vendors.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/vendors/css/extensions/nouislider.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/vendors/css/extensions/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/vendors/css/forms/wizard/bs-stepper.min.css">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/css/core/menu/menu-types/horizontal-menu.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/css/pages/app-ecommerce.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/css/plugins/forms/pickers/form-pickadate.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/css/plugins/forms/form-wizard.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/css/plugins/extensions/ext-component-toastr.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/css/plugins/forms/form-number-input.css">
+
+      <!-- BEGIN: Vendor CSS-->
+    
+      
+      <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/vendors/css/forms/spinner/jquery.bootstrap-touchspin.css">
+      <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/vendors/css/extensions/toastr.min.css">
+      <!-- END: Vendor CSS-->
     
     <!-- END: Vendor CSS-->
 
@@ -47,4 +63,3 @@
     <!-- END: Custom CSS-->
 
 
-</head>

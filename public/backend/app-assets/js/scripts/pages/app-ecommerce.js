@@ -97,21 +97,21 @@ $(function () {
   }
 
   // On cart & view cart btn click to cart
-  if (btnCart.length) {
-    btnCart.on('click', function (e) {
-      var $this = $(this),
-        addToCart = $this.find('.add-to-cart');
-      if (addToCart.length > 0) {
-        e.preventDefault();
-      }
-      addToCart.text('View In Cart').removeClass('add-to-cart').addClass('view-in-cart');
-      $this.attr('href', checkout);
-      toastr['success']('', 'Added Item In Your Cart 🛒', {
-        closeButton: true,
-        tapToDismiss: false
-      });
-    });
-  }
+  // if (btnCart.length) {
+  //   btnCart.on('click', function (e) {
+  //     var $this = $(this),
+  //       addToCart = $this.find('.add-to-cart');
+  //     if (addToCart.length > 0) {
+  //       e.preventDefault();
+  //     }
+  //     addToCart.text('View In Cart').removeClass('add-to-cart').addClass('view-in-cart');
+  //     $this.attr('href', checkout);
+  //     toastr['success']('', 'Added Item In Your Cart 🛒', {
+  //       closeButton: true,
+  //       tapToDismiss: false
+  //     });
+  //   });
+  // }
 
   // For Wishlist Icon
   if (wishlist.length) {

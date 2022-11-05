@@ -228,7 +228,7 @@
                     
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('product.dateFilter') }}" method="GET">
+                    <form action="{{ route('product.filter') }}" method="GET">
                         <div class="row align-items-end">
                             <div class="col-md">
                                 <div class="form-group">
