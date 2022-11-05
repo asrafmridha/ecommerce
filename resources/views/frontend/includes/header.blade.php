@@ -49,7 +49,7 @@
                             <div class="cart_count badge badge-pill badge-light-primary"></div>
                         </div>
                     </li>
-
+                 @auth
                     @foreach (cartlist() as $item)
                     <li class="scrollable-container media-list">
                         <div class="media align-items-center"><img class="d-block rounded mr-1" src="{{ asset('uploads/product/'.$item->image) }}" alt="donuts" width="62">
@@ -63,14 +63,25 @@
                                 </div>
                                 <div class="cart-item-qty">
                                     <div class="input-group">
-                                        <input  class=" touchspin-cart" type="number" value="">  
-                                    </div>  
+                                        {{--  --}}
+                                        {{-- <button class="btn btn-primary bootstrap-touchspin-up">+</button> --}}
+                                        {{-- <input  class="quantity{{ $item->id }}  touchspin-cart" type="number" value="{{ $item->id }}"> --}}
+                                        {{-- <button class="btn btn-primary bootstrap-touchspin-down">-</button> --}}
+                                        <input min="1" class="form-control quantity{{ $item->id }}" type="number" id=""  value="1">
+                                        <button value="{{ $item->id }}" class="increase_product btn btn-primary">Add</button>
+                                        <a href="{{ route('remove-item',$item->id) }}"  class="ml-1 ">X</a>
+                                    </div>
+                                   
                                 </div>
-                                <h5 class="cart-item-price">${{ $item->price }}</h5>
+                                <h5 class="pricetotal cart-item-price">{{ $item->price }}
+                                </h5>
+                                
                             </div>
                         </div>
                     </li>
                     @endforeach
+                    
+                    @endauth
 
                     @auth
                     <li class="dropdown-menu-footer">

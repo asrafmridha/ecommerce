@@ -27,6 +27,14 @@ class FrontendController extends Controller
         $product=Product::where('slug',$slug)->first();
         return view('frontend.pages.details',compact('product'));
     }
+
+    public function remove_item($id){
+        $remove=AddCart::find($id)->delete();
+        return back();
+
+
+
+    }
     
 
   

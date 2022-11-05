@@ -45,8 +45,18 @@ class CartController extends Controller
             'alldata'=>$cart_all_data,
 
         ]);
+    }
 
-
+    public function increase_quantity(Request $request, $id){
+        $data=AddCart::find($id);
+        $product=Product::where('id',$data->product_id)->first(); 
+        $price= $data->price=$product->product_price*$request->quantity;
+ 
+        $data->update();
+        return response()->json([
+            'status'=>'success',
+            'price'=>$price,
+        ]);
     }
 
 }

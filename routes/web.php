@@ -31,9 +31,12 @@ Route::get('/',[FrontendController::class,'index'])->name('index');
 
 Route::get('/checkout/{id}',[FrontendController::class,'checkout'])->name('checkout');
 Route::get('/details/{slug}',[FrontendController::class,'details'])->name('details');
+Route::get('/remove/item//{id}',[FrontendController::class,'remove_item'])->name('remove-item');
 Route::get('/addcart/{id}',[CartController::class,'add_cart']);
 Route::get('/countqnt',[CartController::class,'countQnt']);
 Route::get('/cartshow',[CartController::class,'cartshow']);
+Route::post('/quantity/increase/{id}',[CartController::class,'increase_quantity']);
+
 
 
 

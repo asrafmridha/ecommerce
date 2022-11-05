@@ -823,10 +823,10 @@
                                                     <h4 class="item-price">${{ $checkout->price }}</h4>
                                                 </div>
                                             </div>
-                                            <button type="button" class="btn btn-light mt-1 remove-wishlist">
+                                            <a href="{{ route('remove-item',$checkout->id) }}" type="button" class="btn btn-light mt-1 remove-wishlist">
                                                 <i data-feather="x" class="align-middle mr-25"></i>
                                                 <span>Remove</span>
-                                            </button>
+                                            </a>
                                             <button type="button" class="btn btn-primary btn-cart move-cart">
                                                 <i data-feather="heart" class="align-middle mr-25"></i>
                                                 <span class="text-truncate">Add to Wishlist</span>

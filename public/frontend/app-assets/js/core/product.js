@@ -62,6 +62,7 @@ jQuery(document).ready(function(){
                 
                     toastr.success('Added Item In Your Cart 🛒');
                     quantity();
+                    location.reload();
                 
                
             }
@@ -79,7 +80,67 @@ jQuery(document).ready(function(){
 
        alert('hlw');
     });
+
+    // jQuery('.plusproduct').click(function(){
+    //     var id = $(this).attr('id');
+
+    //     alert(id);
         
+
+    // });
+
+    // jQuery('.minusproduct').click(function(){
+    //     var id=jQuery('.quantity').val();
+    //     alert(id);
+
+    // });
+        
+    // $('#cc').on('input', function() {
+    //     var number =$(this).val()
+    //     alert (number);
+    //     // alert('hlw');
+    //     $('#mirror').text($('#alice').val());
+    //   });
+        
+    $('.increase_product').click(function(){
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        var id=jQuery(this).val();
+        var quantity =$('.quantity'+id).val();
+        // alert(quantity);
+        $.ajax({
+            type: "POST",
+            url: "/quantity/increase/"+id,
+            data:{
+              quantity:quantity
+            },
+            dataType:"JSON",
+            success: function (response) {
+                // alert('hlw');
+                   $('.pricetotal').text(response.price);
+                   location.reload();
+                   
+                   
+
+                    
+                    
+              
+                // alert(response.data);
+                
+            }
+        });
+
+
+
+        
+
+
+    });
    
 
  

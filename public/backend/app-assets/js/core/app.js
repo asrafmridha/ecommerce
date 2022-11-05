@@ -93,8 +93,8 @@ window.colors = {
     // Cart dropdown touchspin
     if ($('.touchspin-cart').length > 0) {
       $('.touchspin-cart').TouchSpin({
-        buttondown_class: 'btn btn-primary',
-        buttonup_class: 'btn btn-primary',
+        buttondown_class: 'btn btn-primary minusproduct',
+        buttonup_class: 'btn btn-primary  plusproduct',
         buttondown_txt: feather.icons['minus'].toSvg(),
         buttonup_txt: feather.icons['plus'].toSvg()
       });
