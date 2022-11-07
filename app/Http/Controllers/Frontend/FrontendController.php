@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\AddCart;
+use App\Models\Cupon;
+use App\Models\CustomerInformation;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use session;
 
 class FrontendController extends Controller
 {
@@ -20,7 +23,8 @@ class FrontendController extends Controller
         // dd('hlw');
 
          $checkout=AddCart::where('user_id',$id)->get();
-        return view('frontend.pages.check_out',compact('checkout'));
+         $totalprice=Addcart::sum('price');
+        return view('frontend.pages.check_out',compact('checkout','totalprice'));
     }
     public function details($slug){
  
@@ -31,9 +35,57 @@ class FrontendController extends Controller
     public function remove_item($id){
         $remove=AddCart::find($id)->delete();
         return back();
+    }
+
+    public function cupon_apply($cuponvalue){
+        // dd($request->all());
+
+        
+        $data=AddCart::where('user_id',Auth::user()->id)->first()->sum('price');
+        // dd($data);
+        $cupon_check=Cupon::where('cupon_code',$cuponvalue)->first();
+
+           if($cupon_check){
+            $totalamount=$data;
+            $cuponamount=$cupon_check->discount_amount;
+            $charge=$cupon_check->charge;
+            return response()->json([
+
+                'data'=>$totalamount,
+                'cuponamount'=>$cuponamount,
+                'charge' =>$charge,
+            ]);
+           }
+           else{
+
+            return response()->json([
+                 'error'=>'invalid Token',
+                
+    
+            ]);
+                
+        }
+      
+       
+        
+        
+    }
+
+    public function customer_store(Request $request){
+        // dd($request->all());
+        $request->validate([
+            'name'=>'required',
+            'phone'=>'required',
+            'house_no'=>'required',
+            'town'=>'required',
+            'state'=>'required',
+            'address_type'=>'required',
 
 
-
+        ]);
+        CustomerInformation::create($request->except('_token'));
+        return back()->withSuccess('Thank You, Please Payment Now');
+        
     }
     
 

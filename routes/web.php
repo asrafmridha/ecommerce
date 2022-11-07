@@ -31,11 +31,18 @@ Route::get('/',[FrontendController::class,'index'])->name('index');
 
 Route::get('/checkout/{id}',[FrontendController::class,'checkout'])->name('checkout');
 Route::get('/details/{slug}',[FrontendController::class,'details'])->name('details');
-Route::get('/remove/item//{id}',[FrontendController::class,'remove_item'])->name('remove-item');
+Route::get('/remove/item/{id}',[FrontendController::class,'remove_item'])->name('remove-item');
 Route::get('/addcart/{id}',[CartController::class,'add_cart']);
 Route::get('/countqnt',[CartController::class,'countQnt']);
 Route::get('/cartshow',[CartController::class,'cartshow']);
 Route::post('/quantity/increase/{id}',[CartController::class,'increase_quantity']);
+Route::get('/cupon/apply/{cuponvalue}',[FrontendController::class,'cupon_apply']);
+
+Route::post('/information',[FrontendController::class,'customer_store'])->name('customer-information');
+
+
+
+
 
 
 
@@ -61,13 +68,21 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
     Route::post('admin/update/{id}',[AdminController::class,'update'])->name('admin.update');
     
     Route::post('reset/password',[AdminController::class,'reset_password'])->name('reset-password');
+
+    Route::get('create/cupon',[AdminController::class,'create_cupon_view'])->name('cupon.create');
+
+    Route::post('admin/cupon/store',[AdminController::class,'cupon_store'])->name('cupon.store');
+
+    
+   
+
     
 
 
 
 });
 
-Route::get('product/datefilter',[ProductController::class,'dateFilter'])->name('product.filter');
+// Route::get('product/datefilter',[ProductController::class,'dateFilter'])->name('product.filter');
 
 
 

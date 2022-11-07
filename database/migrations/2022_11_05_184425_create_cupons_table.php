@@ -15,13 +15,14 @@ return new class extends Migration
     {
         Schema::create('cupons', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('cupon_code');
-            $table->float('discount');
-            $table->float('discount_amount');
-            $table->dateTime('start_at');
-            $table->dateTime('end_at');
+            $table->string('cupon_code')->nullable();
+            $table->float('discount')->nullable();
+            $table->float('discount_amount')->nullable();
+            $table->dateTime('start_at')->nullable();
+            $table->dateTime('end_at')->nullable();
             $table->integer('status')->comment("1 for active 2 for inactive");
-            $table->integer('product_id');
+            $table->integer('product_id')->nullable();
+            $table->float('charge')->default(0)->nullable();
             $table->timestamps();
         });
     }

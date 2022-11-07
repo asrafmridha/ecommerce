@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cupon;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -100,5 +101,14 @@ class AdminController extends Controller
             'password' => Hash::make($request->new_password)
          ]);
         return back()->with("success", "Password changed successfully!");
+         }
+
+         public function create_cupon_view(){
+            return view('backend.cupon.create');
+         }
+
+         public function cupon_store(Request $request){
+            Cupon::create($request->except('_token'));
+            return back()->withSuccess('Cupon Added Successfully');
          }
 }

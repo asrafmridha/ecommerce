@@ -299,5 +299,3 @@
     <!-- END: Content-->
 
     @endsection
-
-  

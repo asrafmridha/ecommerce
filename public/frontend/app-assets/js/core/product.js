@@ -134,17 +134,49 @@ jQuery(document).ready(function(){
                 
             }
         });
+    });
+
+    $('#input-coupons').click(function(){
+        var totalmrp=$('.totalmrp').val();
+        // alert(totalmrp);
+       
+        var cuponvalue=$('.cuponvalue').val();
+        $.ajax({
+            type: "GET",
+            url: "/cupon/apply/"+cuponvalue,
+            // data: "data",
+            dataType: "JSON",
+            success: function (response) {
+                if(response.cuponamount){
+                     
+                    
+                  var discountamount=  $('.discount-amount').text(response.cuponamount);
+                  console.log(discountamount);
+                   var totalmrp= $('.totalmrp').text(response.data);
+                  var charge=  $('.charge').text(response.charge);
+
+                //   var v= parseInt(discountamount)+parseInt(charge);
+
+                  var v=(response.cuponamount+response.charge);
+                  var total=(response.data-v);
+                //   alert(total);
+                    $('.total').text(total);
+                  var v= (parseInt(charge+discountamount));
+
+                
+
+                }
+                else{     
+                    toastr.error(response.error);  
+                      $('.discount-amount').text('');
+                   $('.charge').text('');
 
 
-
-        
-
+                }
+                 
+                
+            }
+        });
 
     });
-   
-
- 
-
-  
-    
 });

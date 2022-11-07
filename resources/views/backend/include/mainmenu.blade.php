@@ -55,6 +55,9 @@
                     </li>          
                 </ul>
             </li>
+
+            <li><a  class="@yield('cupon') d-flex align-items-center" href="{{ route('cupon.create') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Create Cupon</span></a>
+            </li>
            
         </ul>
     </div>

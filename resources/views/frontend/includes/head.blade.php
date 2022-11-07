@@ -62,4 +62,32 @@
     
     <!-- END: Custom CSS-->
 
+    {{-- checkout page css  --}}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/vendors/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/vendors/css/forms/wizard/bs-stepper.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/vendors/css/forms/spinner/jquery.bootstrap-touchspin.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/vendors/css/extensions/toastr.min.css">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/css/bootstrap-extended.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/css/colors.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/css/components.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/css/themes/dark-layout.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/css/themes/bordered-layout.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/css/themes/semi-dark-layout.css">
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/css/core/menu/menu-types/horizontal-menu.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/css/pages/app-ecommerce.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/css/plugins/forms/pickers/form-pickadate.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/css/plugins/forms/form-wizard.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/css/plugins/extensions/ext-component-toastr.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/app-assets/css/plugins/forms/form-number-input.css">
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend') }}/assets/css/style.css">
+    <!-- END: Custom CSS-->
+
 

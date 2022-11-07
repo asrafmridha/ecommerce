@@ -41,11 +41,11 @@
             </li>
 
             
-            <li class="  nav-item dropdown dropdown-cart mr-25"><a class="nav-link" href="javascript:void(0);" data-toggle="dropdown"><i class="ficon" data-feather="shopping-cart"></i><span class="badge badge-pill badge-primary badge-up cart-item-count cartcount"></span></a>
+            <li class="  nav-item dropdown dropdown-cart mr-25"><a class="nav-link" href="javascript:void(0);" data-toggle="dropdown"><i class="ficon" data-feather="shopping-cart"></i><span class="badge badge-pill badge-primary badge-up cart-item-count cartcount">0</span></a>
                 <ul class=" dropdown-menu dropdown-menu-media dropdown-menu-right">
                     <li class="dropdown-menu-header">
                         <div class=" dropdown-header d-flex">
-                            <h4  class="notification-title mb-0 mr-auto ">My Cart</h4>
+                            <h4  class="notification-title mb-0 mr-auto ">Login First</h4>
                             <div class="cart_count badge badge-pill badge-light-primary"></div>
                         </div>
                     </li>
@@ -63,15 +63,10 @@
                                 </div>
                                 <div class="cart-item-qty">
                                     <div class="input-group">
-                                        {{--  --}}
-                                        {{-- <button class="btn btn-primary bootstrap-touchspin-up">+</button> --}}
-                                        {{-- <input  class="quantity{{ $item->id }}  touchspin-cart" type="number" value="{{ $item->id }}"> --}}
-                                        {{-- <button class="btn btn-primary bootstrap-touchspin-down">-</button> --}}
                                         <input min="1" class="form-control quantity{{ $item->id }}" type="number" id=""  value="1">
                                         <button value="{{ $item->id }}" class="increase_product btn btn-primary">Add</button>
                                         <a href="{{ route('remove-item',$item->id) }}"  class="ml-1 ">X</a>
                                     </div>
-                                   
                                 </div>
                                 <h5 class="pricetotal cart-item-price">{{ $item->price }}
                                 </h5>
