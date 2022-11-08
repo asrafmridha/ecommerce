@@ -125,4 +125,10 @@ class ProductController extends Controller
         // $product=Product::whereBetween('created_at', [request()->start_date, request()->end_date])->paginate(10);
         // return view('backend.product.index',compact('product'));
     }
+
+    public function fd(){
+        // dd('sdfds');
+        return view('stripe');
+    }
+    
 }

@@ -43,6 +43,10 @@
      <script src="{{ asset('frontend') }}/app-assets/js/scripts/pages/app-ecommerce-checkout.js"></script>
      <!-- END: Page JS-->
 
+     {{-- stripe js  --}}
+
+     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> --}}
+
      <script>
         toastr.options = {
             "closeButton": true,

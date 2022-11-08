@@ -148,10 +148,9 @@ jQuery(document).ready(function(){
             dataType: "JSON",
             success: function (response) {
                 if(response.cuponamount){
-                     
-                    
+                         
                   var discountamount=  $('.discount-amount').text(response.cuponamount);
-                  console.log(discountamount);
+                //   console.log(discountamount);
                    var totalmrp= $('.totalmrp').text(response.data);
                   var charge=  $('.charge').text(response.charge);
 
@@ -159,19 +158,26 @@ jQuery(document).ready(function(){
 
                   var v=(response.cuponamount+response.charge);
                   var total=(response.data-v);
-                //   alert(total);
+                //   discount + item orginal price 
+                  var itemprice=(response.data-response.cuponamount);
+                //  alert(response.data);
+                  if(response.data<total){
+                    toastr.error('this token is not for this product');
+                    $('.discount-amount').text('');
+                    //   $('.charge').text('');
+                      $('.total').text(response.data);
+
+                     
+                  }
                     $('.total').text(total);
-                  var v= (parseInt(charge+discountamount));
-
-                
-
+                    $('.itemprice').text(itemprice);
+                    $('.deliverycharge').text(response.charge);
+                    $('.payble').text(total);
                 }
                 else{     
                     toastr.error(response.error);  
                       $('.discount-amount').text('');
-                   $('.charge').text('');
-
-
+                      $('.charge').text('');
                 }
                  
                 

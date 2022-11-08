@@ -51,6 +51,7 @@ class CartController extends Controller
         $data=AddCart::find($id);
         $product=Product::where('id',$data->product_id)->first(); 
         $price= $data->price=$product->product_price*$request->quantity;
+         $data->quantity=$request->quantity;
  
         $data->update();
         return response()->json([

@@ -16,6 +16,7 @@ class FrontendController extends Controller
 {
     public function index(){
         $product=Product::all();
+        $product_count=Product::count('product_name');
         return view('frontend.home',compact('product'));
     }
 
@@ -64,11 +65,7 @@ class FrontendController extends Controller
     
             ]);
                 
-        }
-      
-       
-        
-        
+        }    
     }
 
     public function customer_store(Request $request){
@@ -84,7 +81,15 @@ class FrontendController extends Controller
 
         ]);
         CustomerInformation::create($request->except('_token'));
-        return back()->withSuccess('Thank You, Please Payment Now');
+        return redirect()->route('user.payment')->withSuccess('Thank You, Please Payment Now');
+        
+    }
+
+    public function user_address(){
+        return view('frontend.pages.address');
+    }
+    public function user_payment(){
+        return view('frontend.pages.payment');
         
     }
     

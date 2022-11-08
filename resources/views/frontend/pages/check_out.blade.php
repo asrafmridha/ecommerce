@@ -201,7 +201,7 @@
                                                         <div class="detail-amt font-weight-bolder total">${{ $totalprice }}</div>
                                                     </li>
                                                 </ul>
-                                                <button type="button" class="btn btn-primary btn-block btn-next place-order">Place Order</button>
+                                                <a href="{{ route('user.address') }}" class="btn btn-primary btn-block btn-next place-order">Place Order</a>
                                             </div>
                                         </div>
                                     </div>
@@ -212,7 +212,7 @@
                         </div>
                         <!-- Checkout Customer Address Starts -->
                         <div id="step-address" class="content">
-                            <form action="{{ route('customer-information') }}"
+                            {{-- <form action="{{ route('customer-information') }}"
                             method="POST"  class="list-view product-checkout"  >
                             @csrf
                                 <!-- Checkout Customer Address Left starts -->
@@ -244,24 +244,14 @@
                                                     <input type="number" id="checkout-apt-number" class="form-control" name="house_no" placeholder="9447 Glen Eagles Drive" />
                                                 </div>
                                             </div>
-                                            {{-- <div class="col-md-6 col-sm-12">
-                                                <div class="form-group mb-2">
-                                                    <label for="checkout-landmark">Landmark e.g. near apollo hospital:</label>
-                                                    <input type="text" id="checkout-landmark" class="form-control" name="landmark" placeholder="Near Apollo Hospital" />
-                                                </div>
-                                            </div> --}}
+                                           
                                             <div class="col-md-6 col-sm-12">
                                                 <div class="form-group mb-2">
                                                     <label for="checkout-city">Town/City:</label>
                                                     <input type="text" id="checkout-city" class="form-control" name="town" placeholder="Tokyo" />
                                                 </div>
                                             </div>
-                                            {{-- <div class="col-md-6 col-sm-12">
-                                                <div class="form-group mb-2">
-                                                    <label for="checkout-pincode">Pincode:</label>
-                                                    <input type="number" id="checkout-pincode" class="form-control" name="pincode" placeholder="201301" />
-                                                </div>
-                                            </div> --}}
+                                           
                                             <div class="col-md-6 col-sm-12">
                                                 <div class="form-group mb-2">
                                                     <label for="checkout-state">State:</label>
@@ -278,8 +268,8 @@
                                                 </div>
                                             </div>
                                             <div class="col-12">
-                                                <button type="submit" class="btn btn-primary btn-next delivery-address" type="submit">Save And Deliver Here</button>
-                                                {{-- <button type="submit">save</button> --}}
+                                                <button  class="btn btn-primary btn-next delivery-address" type="submit">Save And Deliver Here</button>
+                                              
                                             </div>
                                         </div>
                                     </div>
@@ -305,72 +295,109 @@
                                     </div>
                                 </div>
                                 <!-- Checkout Customer Address Right ends -->
-                            </form>
+                            </form> --}}
                         </div>
                         <!-- Checkout Customer Address Ends -->
 
                         <!-- Checkout Payment Starts -->
                         <div id="step-payment" class="content">
-                            <form  class="list-view product-checkout" >
+                            {{-- <form  class="list-view product-checkout" >
                                 <div class="payment-type">
                                     <div class="card">
                                         <div class="card-header flex-column align-items-start">
                                             <h4 class="card-title">Payment options</h4>
                                             <p class="card-text text-muted mt-25">Be sure to click on correct payment option</p>
                                         </div>
-                                        <div class="card-body">
-                                            <h6 class="card-holder-name my-75">John Doe</h6>
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" id="customColorRadio1" name="paymentOptions" class="custom-control-input" checked />
-                                                <label class="custom-control-label" for="customColorRadio1">
-                                                    US Unlocked Debit Card 12XX XXXX XXXX 0000
-                                                </label>
-                                            </div>
-                                            <div class="customer-cvv mt-1">
-                                                <div class="form-inline">
-                                                    <label class="mb-50" for="card-holder-cvv">Enter CVV:</label>
-                                                    <input type="password" class="form-control ml-sm-75 ml-0 mb-50 input-cvv" name="input-cvv" id="card-holder-cvv" />
-                                                    <button type="button" class="btn btn-primary btn-cvv ml-0 ml-sm-1 mb-50">Continue</button>
+                                       
+
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-6 ">
+                                                    <div class="panel panel-default credit-card-box">
+                                                        <div class="panel-heading display-table" >
+                                                                <h3 class="panel-title" >Payment Details</h3>
+                                                        </div>
+                                                        <div class="panel-body">
+                                            
+                                                            @if (Session::has('success'))
+                                                                <div class="alert alert-success text-center">
+                                                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                                                                    <p>{{ Session::get('success') }}</p>
+                                                                </div>
+                                                            @endif
+                                            
+                                                            {{-- <form 
+                                                                    role="form" 
+                                                                    action="{{ route('stripe.post') }}" 
+                                                                    method="post" 
+                                                                    class="require-validation"
+                                                                    data-cc-on-file="false"
+                                                                    data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
+                                                                    id="payment-form">
+                                                                @csrf
+                                            
+                                                                <div class='form-row row'>
+                                                                    <div class='col-xs-12 form-group required'>
+                                                                        <label class='control-label'>Name on Card</label> <input
+                                                                            class='form-control' size='21' type='text'>
+                                                                    </div>
+                                                                </div>
+                                            
+                                                                <div class='form-row row'>
+                                                                    <div class='col-xs-12 form-group card required'>
+                                                                        <label class='control-label'>Card Number</label> <input
+                                                                            autocomplete='off' class='form-control card-number' size='20'
+                                                                            type='text'>
+                                                                    </div>
+                                                                </div>
+                                            
+                                                                <div class='form-row row'>
+                                                                    <div class='col-xs-12 col-md-4 form-group cvc required'>
+                                                                        <label class='control-label'>CVC</label> <input autocomplete='off'
+                                                                            class='form-control card-cvc' placeholder='ex. 311' size='4'
+                                                                            type='text'>
+                                                                    </div>
+                                                                    <div class='col-xs-12 col-md-4 form-group expiration required'>
+                                                                        <label class='control-label'>Expiration Month</label> <input
+                                                                            class='form-control card-expiry-month' placeholder='MM' size='2'
+                                                                            type='text'>
+                                                                    </div>
+                                                                    <div class='col-xs-12 col-md-4 form-group expiration required'>
+                                                                        <label class='control-label'>Expiration Year</label> <input
+                                                                            class='form-control card-expiry-year' placeholder='YYYY' size='4'
+                                                                            type='text'>
+                                                                    </div>
+                                                                </div>
+                                            
+                                                                <div class='form-row row'>
+                                                                    <div class='col-md-12 error form-group hide'>
+                                                                        <div class='alert-danger alert'>Please correct the errors and try
+                                                                            again.</div>
+                                                                    </div>
+                                                                </div>
+                                            
+                                                                <div class="row">
+                                                                    <div class="col-xs-12">
+                                                                        <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now ($100)</button>
+                                                                       
+                                                                    </div>
+                                                                </div>
+                                                                    
+                                                            </form> --}}
+                                                        </div>
+                                                    </div>        
                                                 </div>
                                             </div>
-                                            <hr class="my-2" />
-                                            <ul class="other-payment-options list-unstyled">
-                                                <li class="py-50">
-                                                    <div class="custom-control custom-radio">
-                                                        <input type="radio" id="customColorRadio2" name="paymentOptions" class="custom-control-input" />
-                                                        <label class="custom-control-label" for="customColorRadio2"> Credit / Debit / ATM Card </label>
-                                                    </div>
-                                                </li>
-                                                <li class="py-50">
-                                                    <div class="custom-control custom-radio">
-                                                        <input type="radio" id="customColorRadio3" name="paymentOptions" class="custom-control-input" />
-                                                        <label class="custom-control-label" for="customColorRadio3"> Net Banking </label>
-                                                    </div>
-                                                </li>
-                                                <li class="py-50">
-                                                    <div class="custom-control custom-radio">
-                                                        <input type="radio" id="customColorRadio4" name="paymentOptions" class="custom-control-input" />
-                                                        <label class="custom-control-label" for="customColorRadio4"> EMI (Easy Installment) </label>
-                                                    </div>
-                                                </li>
-                                                <li class="py-50">
-                                                    <div class="custom-control custom-radio">
-                                                        <input type="radio" id="customColorRadio5" name="paymentOptions" class="custom-control-input" />
-                                                        <label class="custom-control-label" for="customColorRadio5"> Cash On Delivery </label>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <hr class="my-2" />
-                                            <div class="gift-card mb-25">
-                                                <p class="card-text">
-                                                    <i data-feather="plus-circle" class="mr-50 font-medium-5"></i>
-                                                    <span class="align-middle">Add Gift Card</span>
-                                                </p>
-                                            </div>
                                         </div>
+
+                                        {{-- End Stripe  --}}
+
+
+
+
                                     </div>
                                 </div>
-                                <div class="amount-payable checkout-options">
+                                <div class=" checkout-options">
                                     <div class="card">
                                         <div class="card-header">
                                             <h4 class="card-title">Price Details</h4>
@@ -378,27 +405,27 @@
                                         <div class="card-body">
                                             <ul class="list-unstyled price-details">
                                                 <li class="price-detail">
-                                                    <div class="details-title itemprice">Price of  items</div>
-                                                    <div class="detail-amt">
-                                                        <strong>$699.30</strong>
+                                                    <div class="details-title ">Price of  items</div>
+                                                    <div class="detail-amt ">
+                                                        <strong class="itemprice">$699.30</strong>
                                                     </div>
                                                 </li>
                                                 <li class="price-detail">
                                                     <div class="details-title">Delivery Charges</div>
-                                                    <div class="detail-amt discount-amt text-success">Free</div>
+                                                    <div class="deliverycharge detail-amt discount-amt text-success">Free</div>
                                                 </li>
                                             </ul>
                                             <hr />
                                             <ul class="list-unstyled price-details">
                                                 <li class="price-detail">
                                                     <div class="details-title">Amount Payable</div>
-                                                    <div class="detail-amt font-weight-bolder">$699.30</div>
+                                                    <div class="detail-amt font-weight-bolder payble">$699.30</div>
                                                 </li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                            </form> --}}
                         </div>
                         <!-- Checkout Payment Ends -->
                         <!-- </div> -->

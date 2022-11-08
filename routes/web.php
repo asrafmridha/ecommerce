@@ -4,6 +4,8 @@ use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\CartController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\StripeController;
+use App\Http\Controllers\StripePaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,14 +40,23 @@ Route::get('/cartshow',[CartController::class,'cartshow']);
 Route::post('/quantity/increase/{id}',[CartController::class,'increase_quantity']);
 Route::get('/cupon/apply/{cuponvalue}',[FrontendController::class,'cupon_apply']);
 
-Route::post('/information',[FrontendController::class,'customer_store'])->name('customer-information');
+Route::post('/customer/information',[FrontendController::class,'customer_store'])->name('customer-information');
+
+Route::get('user/address',[FrontendController::class,'user_address'])->name('user.address');
+Route::get('user/payment',[FrontendController::class,'user_payment'])->name('user.payment');
 
 
 
+// Route::controller(StripePaymentController::class)->group(function(){
+//     Route::get('stripe', 'stripe');
+//     Route::post('stripe', 'stripePost')->name('stripe.post');
+// });
+
+Route::get('stripe', [StripePaymentController::class, 'stripe'])->name('stripe.index');
+Route::post('stripe', [StripePaymentController::class, 'stripePost'])->name('stripe.post');
 
 
-
-
+// Route::get('/dd',[ProductController::class,'fd']);
 
 // Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
@@ -54,9 +65,6 @@ Route::post('/information',[FrontendController::class,'customer_store'])->name('
 Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
     Route::get('/dashboard',[AdminController::class,'index'])->name('dashboard');
 
-
-
-    
     Route::resource('product', ProductController::class);
     
     Route::get('product/massdelete',[ProductController::class,'mass_delete'])->name('product.mass.delete');
