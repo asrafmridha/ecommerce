@@ -74,10 +74,7 @@
 </head>
 <body>
     
-<div class="container">
-    
-    
-    
+<div class="container"> 
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default credit-card-box">
@@ -85,7 +82,6 @@
                         <h3 class="panel-title" >Payment Details</h3>
                 </div>
                 <div class="panel-body">
-    
                     @if (Session::has('success'))
                         <div class="alert alert-success text-center">
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
@@ -99,7 +95,7 @@
                             method="post" 
                             class="require-validation"
                             data-cc-on-file="false"
-                            data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
+                            data-stripe-publishable-key="pk_test_51M1wePJ6DiRBqXyyvaJjsnmMjnDTDc6RuaZ6jZLRBREqcVWBJua6PXewe9OqsZOceNrrVR4Zg0UVyeVsLJEV70Xo00rF569fJE"
                             id="payment-form">
                         @csrf
     
@@ -142,19 +138,16 @@
                                     again.</div>
                             </div>
                         </div>
-    
                         <div class="row">
                             <div class="col-xs-12">
-                                <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now ($100)</button>
+                                <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now ($)</button>
                             </div>
                         </div>
-                            
                     </form>
                 </div>
             </div>        
         </div>
-    </div>
-        
+    </div>      
 </div>
     
 </body>

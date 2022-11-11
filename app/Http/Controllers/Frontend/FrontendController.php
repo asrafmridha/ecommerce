@@ -43,6 +43,7 @@ class FrontendController extends Controller
 
         
         $data=AddCart::where('user_id',Auth::user()->id)->first()->sum('price');
+        
         // dd($data);
         $cupon_check=Cupon::where('cupon_code',$cuponvalue)->first();
 
@@ -61,10 +62,7 @@ class FrontendController extends Controller
 
             return response()->json([
                  'error'=>'invalid Token',
-                
-    
-            ]);
-                
+            ]);    
         }    
     }
 
@@ -77,12 +75,9 @@ class FrontendController extends Controller
             'town'=>'required',
             'state'=>'required',
             'address_type'=>'required',
-
-
         ]);
         CustomerInformation::create($request->except('_token'));
-        return redirect()->route('user.payment')->withSuccess('Thank You, Please Payment Now');
-        
+        return redirect()->route('user.payment')->withSuccess('Thank You, Please Payment Now'); 
     }
 
     public function user_address(){

@@ -1,4 +1,4 @@
-<nav class="header-navbar navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow navbar-brand-center" data-nav="brand-center">
+<nav class="header-navbar navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow navbar-brand-center " data-nav="brand-center">
     <div class="navbar-header d-xl-block d-none">
         <ul class="nav navbar-nav">
             <li class="nav-item"><a class="navbar-brand" href="{{ asset('frontend') }}/html/ltr/horizontal-menu-template/index.html">
@@ -191,7 +191,7 @@
                 @endauth
 
                 </a>             
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user"><a class="dropdown-item" href="page-profile.html"><i class="mr-50" data-feather="user"></i> Profile</a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user"><a class="dropdown-item" href="#"><i class="mr-50" data-feather="user"></i>Profile</a>
                   
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf

@@ -123,13 +123,7 @@ jQuery(document).ready(function(){
             success: function (response) {
                 // alert('hlw');
                    $('.pricetotal').text(response.price);
-                   location.reload();
-                   
-                   
-
-                    
-                    
-              
+                   location.reload();           
                 // alert(response.data);
                 
             }

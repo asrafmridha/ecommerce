@@ -1,8 +1,5 @@
 @extends('frontend.mastaring.master')
 @section('content')
-
-
-
     <!-- BEGIN: Content-->
     <div class="app-content content ecommerce-application">
         <div class="content-overlay"></div>
@@ -437,7 +434,5 @@
     </div>
     <!-- END: Content-->
 
-  
-
-    @endsection
+@endsection
 

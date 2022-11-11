@@ -45,6 +45,9 @@ Route::post('/customer/information',[FrontendController::class,'customer_store']
 Route::get('user/address',[FrontendController::class,'user_address'])->name('user.address');
 Route::get('user/payment',[FrontendController::class,'user_payment'])->name('user.payment');
 
+Route::get('user/pa',[FrontendController::class,'user_paym'])->name('product.filter');
+
+
 
 
 // Route::controller(StripePaymentController::class)->group(function(){
