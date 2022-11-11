@@ -48,6 +48,7 @@ class ProductController extends Controller
             'product_price'=>'required',
             'status'=>'required|numeric',
             'star'=>'required',
+            'quantity'=>'required',
         ]);
         
         

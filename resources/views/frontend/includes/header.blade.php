@@ -61,11 +61,15 @@
                                 <div class="media-heading">
                                     <h6 class="cart-item-title"><a class="text-body" href="app-ecommerce-details.html">{{ $item->name }}</a></h6><small class="cart-item-by"></small>
                                 </div>
-                                <div class="cart-item-qty">
+                                <div class="cart-item-qty row">
                                     <div class="input-group">
-                                        <input min="1" class="form-control quantity{{ $item->id }}" type="number" id=""  value="1">
-                                        <button value="{{ $item->id }}" class="increase_product btn btn-primary">Add</button>
+                                        <input value="{{ $item->quantity }}" min="1" class=" quantity{{ $item->id }}      touchspin-cart" type="number" id=""  value="1">
+                                        
+                                        <button value="{{ $item->id }}" class="increase_product btn btn-primary  btn-sm">Add</button>
                                         <a href="{{ route('remove-item',$item->id) }}"  class="ml-1 ">X</a>
+
+                                        {{-- <input class="touchspin-cart" type="number" value="1">
+                                        <button value="{{ $item->id }}" class="increase_product btn btn-primary ">Add</button> --}}
                                     </div>
                                 </div>
                                 <h5 class="pricetotal cart-item-price">{{ $item->price }}

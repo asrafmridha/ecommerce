@@ -21,20 +21,16 @@ jQuery(document).ready(function(){
             url: "/cartshow",
             dataType: "JSON",
             success: function (response) {
-                
                var cart="";
                var subtotal=0;
                jQuery('.cart_count').text(response.count);
                $.each(response.alldata, function (key, item) {
                 subtotal+=item.price;
-                // alert(subtotal);
-                
+        
             });
-                // jQuery('.datashow').html(cart);
+                
                 jQuery('.subtotal').text(subtotal);
-                // 
-              
-              
+            
                
             }
             
@@ -71,14 +67,14 @@ jQuery(document).ready(function(){
 
     // for details page add cart 
     $(document).on('input', '#coin', function(){
-        alert('hlw');
+        // alert('hlw');
         var coins = $("#coins").val();
         $("#reward").text(coins);
     })
 
     jQuery('#coin').click(function(){
 
-       alert('hlw');
+    //    alert('hlw');
     });
 
     // jQuery('.plusproduct').click(function(){
@@ -112,7 +108,6 @@ jQuery(document).ready(function(){
 
         var id=jQuery(this).val();
         var quantity =$('.quantity'+id).val();
-        // alert(quantity);
         $.ajax({
             type: "POST",
             url: "/quantity/increase/"+id,
@@ -121,11 +116,16 @@ jQuery(document).ready(function(){
             },
             dataType:"JSON",
             success: function (response) {
-                // alert('hlw');
-                   $('.pricetotal').text(response.price);
-                   location.reload();           
-                // alert(response.data);
-                
+                if(response.status=='failed'){
+                    // console.log(response.quantity);
+                    toastr.error(response.quantity);  
+                }
+                else{
+                    $('.pricetotal').text(response.price);
+                    location.reload(); 
+
+                }
+                             
             }
         });
     });

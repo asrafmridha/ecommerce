@@ -102,6 +102,20 @@
 
                     <div class="col-12">
                         <div class="form-group">
+                            <label for="quantity"> {{ __('Product Quantity') }} <span class="text-danger">*</span></label>
+                            <input min="0" type="number" id="quantity" class="form-control" name="quantity" placeholder="Enter Product Quantity" value="{{ old('quantity') }}" />
+                        </div>
+                        @error('quantity')
+                            <div class="alert alert-danger">
+                                <div class="alert-body">
+                                    {{ $message }}
+                                </div>
+                            </div>
+                        @enderror
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-group">
                             <label for="status"> {{ __('Product Status') }} <span class="text-danger">*</span></label>
                             <select class="form-control" name="status">
                                 <option value="">-----Select Status-----</option>

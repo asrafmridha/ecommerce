@@ -50,8 +50,16 @@ class CartController extends Controller
     public function increase_quantity(Request $request, $id){
         $data=AddCart::find($id);
         $product=Product::where('id',$data->product_id)->first(); 
+        if($product->quantity < $request->quantity){
+          return response()->json([
+
+            'status'=>'failed',
+            'quantity'=>'Sorry this item Stock Out',
+
+          ]);
+        }
         $price= $data->price=$product->product_price*$request->quantity;
-         $data->quantity=$request->quantity;
+        $data->quantity=$request->quantity;
  
         $data->update();
         return response()->json([

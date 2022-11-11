@@ -39,12 +39,8 @@ class FrontendController extends Controller
     }
 
     public function cupon_apply($cuponvalue){
-        // dd($request->all());
 
-        
         $data=AddCart::where('user_id',Auth::user()->id)->first()->sum('price');
-        
-        // dd($data);
         $cupon_check=Cupon::where('cupon_code',$cuponvalue)->first();
 
            if($cupon_check){
