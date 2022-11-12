@@ -54,10 +54,7 @@
                     <li class="scrollable-container media-list">
                         <div class="media align-items-center"><img class="d-block rounded mr-1" src="{{ asset('uploads/product/'.$item->image) }}" alt="donuts" width="62">
                             <div class="media-body">
-                                
-                                {{-- <button type="button" class=" deletecart ficon cart-item-remove cart_remove" data-feather="x"  value="{{ $item->id }}">++</button> --}}
-                              
-                            
+                         
                                 <div class="media-heading">
                                     <h6 class="cart-item-title"><a class="text-body" href="app-ecommerce-details.html">{{ $item->name }}</a></h6><small class="cart-item-by"></small>
                                 </div>
@@ -65,32 +62,35 @@
                                     <div class="input-group">
 
                                       
-                                        <input value="{{ $item->quantity }}" min="1" class="touchspin-cart quantity{{ $item->id }}  form-control" type="number">
+                                        {{-- <input   min="1" class="touchspin-cart quantity{{ $item->id }}   form-control" type="number" > --}}
+
+                                        {{-- <input type="number" value="{{ $item->quantity }}"> --}}
+                                       
+                                        <input   min="1" class="touchspin-cart quantity{{ $item->id }}   form-control" type="number" value="{{ $item->quantity }}">
 
                                         <button value="{{ $item->id }}" class="increase_product btn btn-primary  btn-sm">Add</button>
                                         <a href="{{ route('remove-item',$item->id) }}"  class="ml-1 ">X</a>
-
+                                        {{-- <button type="button"  value="{{ $item->id }}"  class="ml-1 form-control productdelete">X</button> --}}
                                         {{-- <input class="touchspin-cart" type="number" value="1">
                                         <button value="{{ $item->id }}" class="increase_product btn btn-primary ">Add</button> --}}
                                     </div>
                                 </div>
                                 {{-- <h5 class="pricetotal cart-item-price">{{ $item->price }}
                                 </h5> --}}
-                                <h5 class="pricetotal cart-item-price">{{ $item->price }}
-                                </h5>
-                                
+                                <h5  class="pricetotal{{ $item->id }} cart-item-price">{{ $item->price }}
+                                </h5>          
                             </div>
                         </div>
                     </li>
                     @endforeach
-                    
                     @endauth
+                    
 
                     @auth
                     <li class="dropdown-menu-footer">
                         <div class="d-flex justify-content-between mb-1">
                             <h6 class="font-weight-bolder mb-0">Total:</h6>
-                            <h6 class=" subtotal text-primary font-weight-bolder mb-0">$</h6>
+                            <h6 class="subtotal text-primary font-weight-bolder mb-0">$</h6>
                         </div><a  class="btn btn-primary btn-block" href="{{ route('checkout',Auth::user()->id) }}">Checkout</a>
                     </li>
                         

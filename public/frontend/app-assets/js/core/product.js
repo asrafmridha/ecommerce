@@ -2,6 +2,8 @@ jQuery(document).ready(function(){
     // alert('hlw');
     quantity();
     cartshow();
+    cartcount();
+    
 
     function quantity(){
 
@@ -15,6 +17,22 @@ jQuery(document).ready(function(){
         });
     }
 
+    function cartcount(){
+        var subtotal=0;
+        $.ajax({
+            type: "GET",
+            url: "/cart/countqnt",
+            dataType: "JSON",
+            success: function (response) { 
+
+                    jQuery('.subtotal').text(response.totalamount);
+                
+            }
+        });
+
+    }
+
+
     function cartshow(){
         $.ajax({
             type: "GET",
@@ -22,7 +40,7 @@ jQuery(document).ready(function(){
             dataType: "JSON",
             success: function (response) {
                var cart="";
-               var subtotal=0;
+            //    var subtotal=0;
                jQuery('.cart_count').text(response.count);
                $.each(response.alldata, function (key, item) {
                 subtotal+=item.price;
@@ -48,11 +66,10 @@ jQuery(document).ready(function(){
             type: "POST",
             url: "/addcart/"+product_id,
             dataType: "JSON",
-            success: function (response) { 
+            success: function (response) {
+                // alert(response.cartcount) ;
                     toastr.success('Added Item In Your Cart 🛒');
-                    quantity();
                     location.reload();
- 
             }
         });   
     });
@@ -100,6 +117,7 @@ jQuery(document).ready(function(){
 
         var id=jQuery(this).val();
         var quantity =$('.quantity'+id).val();
+        // alert(quantity);
         $.ajax({
             type: "POST",
             url: "/quantity/increase/"+id,
@@ -115,8 +133,13 @@ jQuery(document).ready(function(){
 
                 }
                 else{
-                    $('.pricetotal').text(response.price);
-                    location.reload(); 
+                    // alert(response.price);
+
+                    // console.log(response.price);
+                    $('.pricetotal'+id).text(response.price);
+                    cartcount();
+                    // location.reload(); 
+                    
 
                 }
                              
@@ -173,5 +196,22 @@ jQuery(document).ready(function(){
         });
 
     });
+
+    $('.productdelete').on('click',function(){
+
+        var id= $(this).val();
+        $.ajax({
+            type: "GET",
+            url: "/remove/item/"+id,
+            dataType: "JSON",
+            success: function (response) {
+                toastr.success(response.success); 
+                location.reload();
+                
+                
+                
+            }
+        });
+    })
 
 });

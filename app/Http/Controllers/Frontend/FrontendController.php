@@ -40,6 +40,13 @@ class FrontendController extends Controller
         return back();
     }
 
+    // public function remove_item($id){
+    //     $remove=AddCart::find($id)->delete();
+    //     return response()->json([
+    //         'success'=>"Remove From Cart Successfully",
+    //     ]);
+    // }
+
     public function cupon_apply($cuponvalue){
 
         $data=AddCart::where('user_id',Auth::user()->id)->first()->sum('price');
@@ -87,9 +94,11 @@ class FrontendController extends Controller
     }
 
     public function user_address(){
+    
         return view('frontend.pages.address');
     }
     public function user_payment(){
+        
         return view('frontend.pages.payment');
         
     }
