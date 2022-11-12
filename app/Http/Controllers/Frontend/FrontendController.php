@@ -8,9 +8,11 @@ use App\Models\Cupon;
 use App\Models\CustomerInformation;
 use App\Models\Product;
 use App\Models\User;
+use Illuminate\Contracts\Session\Session as SessionSession;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use session;
+// use session;
+use Illuminate\Support\Facades\Session;
 
 class FrontendController extends Controller
 {
@@ -72,8 +74,16 @@ class FrontendController extends Controller
             'state'=>'required',
             'address_type'=>'required',
         ]);
+
+        Session::put('customer_info',['name'=> $request->name,'phone'=>$request->phone,'house_no'=> $request->house_no,'town'=> $request->town,'state'=> $request->state,'address_type'=> $request->address_type]);
+        
         CustomerInformation::create($request->except('_token'));
-        return redirect()->route('user.payment')->withSuccess('Thank You, Please Payment Now'); 
+        // Session::save();
+
+        return redirect()->route('user.payment')->withSuccess('Thank You, Please Payment Now');
+
+        // 
+        // return redirect()->route('user.payment')->withSuccess('Thank You, Please Payment Now'); 
     }
 
     public function user_address(){
@@ -83,6 +93,11 @@ class FrontendController extends Controller
         return view('frontend.pages.payment');
         
     }
+
+    // public function check(){
+    //     $allSessions = session()->();
+    //     dd($allSessions);
+    // }
     
 
   

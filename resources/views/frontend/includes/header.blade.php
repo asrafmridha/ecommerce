@@ -63,8 +63,10 @@
                                 </div>
                                 <div class="cart-item-qty row">
                                     <div class="input-group">
-                                        <input value="{{ $item->quantity }}" min="1" class=" quantity{{ $item->id }}      touchspin-cart" type="number" id=""  value="1">
-                                        
+
+                                      
+                                        <input value="{{ $item->quantity }}" min="1" class="touchspin-cart quantity{{ $item->id }}  form-control" type="number">
+
                                         <button value="{{ $item->id }}" class="increase_product btn btn-primary  btn-sm">Add</button>
                                         <a href="{{ route('remove-item',$item->id) }}"  class="ml-1 ">X</a>
 
@@ -72,6 +74,8 @@
                                         <button value="{{ $item->id }}" class="increase_product btn btn-primary ">Add</button> --}}
                                     </div>
                                 </div>
+                                {{-- <h5 class="pricetotal cart-item-price">{{ $item->price }}
+                                </h5> --}}
                                 <h5 class="pricetotal cart-item-price">{{ $item->price }}
                                 </h5>
                                 

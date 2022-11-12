@@ -91,7 +91,6 @@
 
                 <!-- E-commerce Products Starts -->
                 <section id="ecommerce-products" class="grid-view">
-                    
                 @foreach ($product as $product)
                     <div class="card ecommerce-card">
                         <div class="item-img text-center">
@@ -139,6 +138,11 @@
                                 <i data-feather="shopping-cart"></i>
                                 <span  class="add-to-cart">Add to cart</span>
                             </button>
+
+                            {{-- <a href="{{ route('addcart',$product->id) }}" class="btn btn-primary btn-cart addtocart">
+                                <i data-feather="shopping-cart"></i>
+                                <span  class="add-to-cart">Add to cart</span>
+                            </a> --}}
                         </div>
                     </div>
                 @endforeach

@@ -178,14 +178,7 @@
                                                         <div class="detail-title"> Discount</div>
                                                         <div class="detail-amt discount-amt text-success discount-amount"></div>
                                                     </li>
-                                                    {{-- <li class="price-detail">
-                                                        <div class="detail-title">Estimated Tax</div>
-                                                        <div class="detail-amt">$1.3</div>
-                                                    </li> --}}
-                                                    {{-- <li class="price-detail">
-                                                        <div class="detail-title">EMI Eligibility</div>
-                                                        <a href="javascript:void(0)" class="detail-amt text-primary">Details</a>
-                                                    </li> --}}
+                                                  
                                                     <li class="price-detail">
                                                         <div class="detail-title">Delivery Charges</div>
                                                         <div class="detail-amt discount-amt text-success charge">Free</div>
@@ -395,7 +388,7 @@
                                     </div>
                                 </div>
                                 <div class=" checkout-options">
-                                    <div class="card">
+                                    {{-- <div class="card">
                                         <div class="card-header">
                                             <h4 class="card-title">Price Details</h4>
                                         </div>
@@ -420,9 +413,9 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
-                            </form> --}}
+                            </form> 
                         </div>
                         <!-- Checkout Payment Ends -->
                         <!-- </div> -->

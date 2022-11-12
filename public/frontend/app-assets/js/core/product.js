@@ -26,16 +26,10 @@ jQuery(document).ready(function(){
                jQuery('.cart_count').text(response.count);
                $.each(response.alldata, function (key, item) {
                 subtotal+=item.price;
-        
-            });
-                
+            });   
                 jQuery('.subtotal').text(subtotal);
-            
-               
             }
-            
-        });
-        
+        });   
     }
 
     $('.addtocart').click(function (e) { 
@@ -51,16 +45,14 @@ jQuery(document).ready(function(){
         var product_id =jQuery(this).val();
         //    alert(product_id);
         $.ajax({
-            type: "GET",
+            type: "POST",
             url: "/addcart/"+product_id,
             dataType: "JSON",
-            success: function (response) {
-                
+            success: function (response) { 
                     toastr.success('Added Item In Your Cart 🛒');
                     quantity();
                     location.reload();
-                
-               
+ 
             }
         });   
     });
@@ -118,7 +110,9 @@ jQuery(document).ready(function(){
             success: function (response) {
                 if(response.status=='failed'){
                     // console.log(response.quantity);
-                    toastr.error(response.quantity);  
+                    toastr.error(response.quantity); 
+                    toastr.success(response.available); 
+
                 }
                 else{
                     $('.pricetotal').text(response.price);
@@ -179,4 +173,5 @@ jQuery(document).ready(function(){
         });
 
     });
+
 });
