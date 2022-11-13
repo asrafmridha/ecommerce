@@ -55,6 +55,22 @@ method="POST"  class="list-view product-checkout"  >
                         </select>
                     </div>
                 </div>
+
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-group mb-2">
+                        <label for="checkout-city">Amount</label>
+                        <input value="{{ old('amount') }}" type="text" id="checkout-city" class="form-control" name="amount" placeholder="Amount" />
+                    </div>
+                </div>
+
+            
+
+                {{-- <div class="col-md-12 col-sm-12">
+                    <div class="form-group mb-2">
+                        <label for="checkout-state">Total Amount</label>
+                        <input type="text" id="user_amount" class="form-control user_amount" name="state" placeholder="Amount"  readonly/>
+                    </div>
+                </div> --}}
                 <div class="col-12">
                     <button  class="btn btn-primary btn-next delivery-address" type="submit">Save And Deliver Here</button> <br> <br>
                     {{-- <a href="{{ route('user.payment') }}"  class="d-inline btn btn-primary btn-block btn-next delivery-address mt-2">

@@ -72,7 +72,7 @@ class FrontendController extends Controller
     }
 
     public function customer_store(Request $request){
-        // dd($request->all());
+
         $request->validate([
             'name'=>'required',
             'phone'=>'required',
@@ -80,11 +80,26 @@ class FrontendController extends Controller
             'town'=>'required',
             'state'=>'required',
             'address_type'=>'required',
+            'amount'=>'required',
         ]);
 
-        Session::put('customer_info',['name'=> $request->name,'phone'=>$request->phone,'house_no'=> $request->house_no,'town'=> $request->town,'state'=> $request->state,'address_type'=> $request->address_type]);
+        Session::put('customer_info',['name'=> $request->name,'phone'=>$request->phone,'house_no'=> $request->house_no,'town'=> $request->town,'state'=> $request->state,'address_type'=> $request->address_type,'amount'=>$request->amount]);
+
+        // CustomerInformation::create($request->except('_token'));
+        $customer=new CustomerInformation();
+        $customer->user_id=Auth::user()->id;
+        $customer->email=Auth::user()->email;
+        $customer->name=$request->name;
+        $customer->phone=$request->phone;
+        $customer->house_no=$request->house_no;
+        $customer->town=$request->town;
+        $customer->state=$request->state;
+        $customer->address_type=$request->address_type;
+        $customer->amount=$request->amount;
+        $customer->save();
+
         
-        CustomerInformation::create($request->except('_token'));
+        
         // Session::save();
 
         return redirect()->route('user.payment')->withSuccess('Thank You, Please Payment Now');
@@ -94,7 +109,8 @@ class FrontendController extends Controller
     }
 
     public function user_address(){
-    
+         
+        
         return view('frontend.pages.address');
     }
     public function user_payment(){

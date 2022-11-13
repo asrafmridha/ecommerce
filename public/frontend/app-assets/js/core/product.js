@@ -4,6 +4,8 @@ jQuery(document).ready(function(){
     cartshow();
     cartcount();
     
+    
+    
 
     function quantity(){
 
@@ -176,14 +178,16 @@ jQuery(document).ready(function(){
                     toastr.error('this token is not for this product');
                     $('.discount-amount').text('');
                     //   $('.charge').text('');
-                      $('.total').text(response.data);
-
-                     
+                      $('.total').text(response.data);          
                   }
                     $('.total').text(total);
                     $('.itemprice').text(itemprice);
                     $('.deliverycharge').text(response.charge);
                     $('.payble').text(total);
+                    // $('.user_amount').val('asraf');
+                    
+                    
+                   
                 }
                 else{     
                     toastr.error(response.error);  

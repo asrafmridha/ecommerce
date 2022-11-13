@@ -172,7 +172,7 @@
                                                 <ul class="list-unstyled">
                                                     <li class="price-detail">
                                                         <div class="detail-title">Total MRP</div>
-                                                        <div class="detail-amt ">${{ $totalprice }}</div>
+                                                        <div class="detail-amt" >${{ $totalprice }}</div>
                                                     </li>
                                                     <li class="price-detail">
                                                         <div class="detail-title"> Discount</div>
