@@ -68,8 +68,8 @@
                                        
                                         <input   min="1" class="touchspin-cart quantity{{ $item->id }}   form-control" type="number" value="{{ $item->quantity }}">
 
-                                        <button value="{{ $item->id }}" class="increase_product btn btn-primary  btn-sm">Add</button>
-                                        <a href="{{ route('remove-item',$item->id) }}"  class="ml-1 ">X</a>
+                                        <button value="{{ $item->id }}" class=" increase_product btn btn-primary  btn-sm">Add</button>
+                                        <a href="{{ route('remove-item',$item->id) }}"  class="ml-1">X</a>
                                         {{-- <button type="button"  value="{{ $item->id }}"  class="ml-1 form-control productdelete">X</button> --}}
                                         {{-- <input class="touchspin-cart" type="number" value="1">
                                         <button value="{{ $item->id }}" class="increase_product btn btn-primary ">Add</button> --}}

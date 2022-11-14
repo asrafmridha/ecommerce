@@ -69,9 +69,15 @@ jQuery(document).ready(function(){
             url: "/addcart/"+product_id,
             dataType: "JSON",
             success: function (response) {
-                // alert(response.cartcount) ;
+                if(response.status==404){
+                    toastr.error(response.error);
+                }
+                else{
+                    // alert(response.cartcount) ;
                     toastr.success('Added Item In Your Cart 🛒');
                     location.reload();
+                }
+                
             }
         });   
     });

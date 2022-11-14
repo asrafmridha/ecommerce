@@ -13,38 +13,72 @@ use Illuminate\Validation\Rules\Exists;
 class CartController extends Controller
 {
     public function add_cart(Request $request, $id){
+  
+            if(AddCart::where('product_id',$id)->exists()){
+                $item=Product::find($id);
+                $cart = AddCart::where('product_id', $id)->first();
+                $cart->increment('quantity', '1');
+                $cart->price=$item->product_price*$cart->quantity;
+                $cart->save();
+                $cartcount=$cart->quantity;
+    
+                return response()->json([
+                      'status'=>'success',
+                      'cartcount'=>$cartcount,
+                    ]);  
+            }else{
+                
+                $addcart=new AddCart();
+                $item=Product::find($id);
+                // $bb=AddCart::where('product_id',$id)->exists();
+                
+                    $addcart->user_id=Auth::user()->id;
+                    $addcart->product_id=$id;
+                    $addcart->name=$item->product_name;
+                    $addcart->price=$item->product_price;
+                    $addcart->image=$item->image;
+                    $addcart->quantity=1;
+                    $addcart->save();
+         
+                return response()->json([
+                'quantity'=>$addcart->quantity,
+                  'status'=>'success'
+                ]);   
+            }
 
-        if(AddCart::where('product_id',$id)->exists()){
-            $item=Product::find($id);
-            $cart = AddCart::where('product_id', $id)->first();
-            $cart->increment('quantity', '1');
-             $cart->price=$item->product_price*$cart->quantity;
-            $cart->save();
-            $cartcount=$cart->quantity;
+        
+        
+        // if(AddCart::where('product_id',$id)->exists()){
+        //     $item=Product::find($id);
+        //     $cart = AddCart::where('product_id', $id)->first();
+        //     $cart->increment('quantity', '1');
+        //      $cart->price=$item->product_price*$cart->quantity;
+        //     $cart->save();
+        //     $cartcount=$cart->quantity;
 
-            return response()->json([
-                  'status'=>'success',
-                  'cartcount'=>$cartcount,
-                ]);  
-        }else{
+        //     return response()->json([
+        //           'status'=>'success',
+        //           'cartcount'=>$cartcount,
+        //         ]);  
+        // }else{
             
-            $addcart=new AddCart();
-            $item=Product::find($id);
-            $bb=AddCart::where('product_id',$id)->exists();
+        //     $addcart=new AddCart();
+        //     $item=Product::find($id);
+        //     // $bb=AddCart::where('product_id',$id)->exists();
             
-                $addcart->user_id=Auth::user()->id;
-                $addcart->product_id=$id;
-                $addcart->name=$item->product_name;
-                $addcart->price=$item->product_price;
-                $addcart->image=$item->image;
-                $addcart->quantity=1;
-                $addcart->save();
+        //         $addcart->user_id=Auth::user()->id;
+        //         $addcart->product_id=$id;
+        //         $addcart->name=$item->product_name;
+        //         $addcart->price=$item->product_price;
+        //         $addcart->image=$item->image;
+        //         $addcart->quantity=1;
+        //         $addcart->save();
      
-            return response()->json([
-            'quantity'=>$addcart->quantity,
-              'status'=>'success'
-            ]);   
-        }
+        //     return response()->json([
+        //     'quantity'=>$addcart->quantity,
+        //       'status'=>'success'
+        //     ]);   
+        // }
 
     }
 
