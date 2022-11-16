@@ -24,9 +24,6 @@
             <div class="card-body">
                 <form action="{{ route('cupon.store') }}"  method="POST">
                     @csrf
-
-                    
-
                     <div class="col-12">
                         <div class="form-group">
                             <label for="cupon_code"> {{ __('Cupon Code') }} <span class="text-danger">*</span></label>
@@ -44,7 +41,7 @@
                     <div class="col-12">
                         <div class="form-group">
                             <label for="discount"> {{ __('Cupon Discount') }} <span class="text-danger">*</span></label>
-                            <input type="number" id="discount" class="form-control" name="discount" placeholder="Enter Cupon Discount Here" value="{{ old('discount') }}" />
+                            <input type="number" min="0" id="discount" class="form-control" name="discount" placeholder="Enter Cupon Discount Here" value="{{ old('discount') }}" />
                         </div>
                         @error('discount')
                             <div class="alert alert-danger">
@@ -58,7 +55,7 @@
                     <div class="col-12">
                         <div class="form-group">
                             <label for="discount_amount"> {{ __('Cupon Discount Amount') }} <span class="text-danger">*</span></label>
-                            <input type="number" id="discount_amount" class="form-control" name="discount_amount" placeholder="Cupon discount Amount" value="{{ old('discount_amount') }}" />
+                            <input type="number" min="0" id="discount_amount" class="form-control" name="discount_amount" placeholder="Cupon discount Amount" value="{{ old('discount_amount') }}" />
                         </div>
                         @error('discount_amount')
                             <div class="alert alert-danger">

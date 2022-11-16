@@ -50,6 +50,8 @@ Route::get('user/payment',[FrontendController::class,'user_payment'])->name('use
 
 Route::get('user/pa',[FrontendController::class,'user_paym'])->name('product.filter');
 
+Route::get('user/ip',[FrontendController::class,'ip_address']);
+
 
 
 
@@ -93,6 +95,11 @@ Route::group(['prefix'=>'/admin','middleware'=>['auth']],function(){
 
 // Route::get('gg',[FrontendController::class,'check']);
 
+// Route::get('get-ip-details', function () {
+// 	$ip = '66.102.0.0';
+//     $data = \Location::get($ip);
+//     dd($data);
+// });
 
 
 

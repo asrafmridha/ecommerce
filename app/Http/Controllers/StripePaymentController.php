@@ -39,8 +39,7 @@ class StripePaymentController extends Controller
                 // "customer"=>Auth::user()->email,
         ]);
       
-        Session::flash('success', 'Payment successful!');
-              
+        Session::flash('success', 'Payment successful!');  
         return back();
     }
 }

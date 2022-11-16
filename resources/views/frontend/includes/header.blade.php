@@ -45,11 +45,20 @@
                 <ul class=" dropdown-menu dropdown-menu-media dropdown-menu-right">
                     <li class="dropdown-menu-header">
                         <div class=" dropdown-header d-flex">
+                            @auth
+                            
+                            <h4  class="notification-title mb-0 mr-auto ">Your Cart</h4>
+
+                            @endauth
+                            @guest
+
                             <h4  class="notification-title mb-0 mr-auto ">Login First</h4>
+
+                            @endguest
                             <div class="cart_count badge badge-pill badge-light-primary"></div>
                         </div>
                     </li>
-                 @auth
+                @auth
                     @foreach (cartlist() as $item)
                     <li class="scrollable-container media-list">
                         <div class="media align-items-center"><img class="d-block rounded mr-1" src="{{ asset('uploads/product/'.$item->image) }}" alt="donuts" width="62">
@@ -60,12 +69,6 @@
                                 </div>
                                 <div class="cart-item-qty row">
                                     <div class="input-group">
-
-                                      
-                                        {{-- <input   min="1" class="touchspin-cart quantity{{ $item->id }}   form-control" type="number" > --}}
-
-                                        {{-- <input type="number" value="{{ $item->quantity }}"> --}}
-                                       
                                         <input   min="1" class="touchspin-cart quantity{{ $item->id }}   form-control" type="number" value="{{ $item->quantity }}">
 
                                         <button value="{{ $item->id }}" class=" increase_product btn btn-primary  btn-sm">Add</button>
@@ -75,17 +78,46 @@
                                         <button value="{{ $item->id }}" class="increase_product btn btn-primary ">Add</button> --}}
                                     </div>
                                 </div>
-                                {{-- <h5 class="pricetotal cart-item-price">{{ $item->price }}
-                                </h5> --}}
+                               
                                 <h5  class="pricetotal{{ $item->id }} cart-item-price">{{ $item->price }}
                                 </h5>          
                             </div>
                         </div>
                     </li>
                     @endforeach
-                    @endauth
-                    
+                @endauth
 
+                @guest
+
+                @foreach (cartlist() as $item)
+                <li class="scrollable-container media-list">
+                    <div class="media align-items-center"><img class="d-block rounded mr-1" src="{{ asset('uploads/product/'.$item->image) }}" alt="donuts" width="62">
+                        <div class="media-body">
+                     
+                            <div class="media-heading">
+                                <h6 class="cart-item-title"><a class="text-body" href="app-ecommerce-details.html">{{ $item->name }}</a></h6><small class="cart-item-by"></small>
+                            </div>
+                            <div class="cart-item-qty row">
+                                <div class="input-group">
+                                    <input   min="1" class="touchspin-cart quantity{{ $item->id }}   form-control" type="number" value="{{ $item->quantity }}">
+
+                                    <button value="{{ $item->id }}" class=" increase_product btn btn-primary  btn-sm">Add</button>
+                                    <a href="{{ route('remove-item',$item->id) }}"  class="ml-1">X</a>
+                                    {{-- <button type="button"  value="{{ $item->id }}"  class="ml-1 form-control productdelete">X</button> --}}
+                                    {{-- <input class="touchspin-cart" type="number" value="1">
+                                    <button value="{{ $item->id }}" class="increase_product btn btn-primary ">Add</button> --}}
+                                </div>
+                            </div>
+                            {{-- <h5 class="pricetotal cart-item-price">{{ $item->price }}
+                            </h5> --}}
+                            <h5  class="pricetotal{{ $item->id }} cart-item-price">{{ $item->price }}
+                            </h5>          
+                        </div>
+                    </div>
+                </li>
+                @endforeach
+
+                @endguest
                     @auth
                     <li class="dropdown-menu-footer">
                         <div class="d-flex justify-content-between mb-1">
@@ -93,11 +125,16 @@
                             <h6 class="subtotal text-primary font-weight-bolder mb-0">$</h6>
                         </div><a  class="btn btn-primary btn-block" href="{{ route('checkout',Auth::user()->id) }}">Checkout</a>
                     </li>
-                        
                     @endauth
 
-                    
-                                                  
+                    @guest
+                    <li class="dropdown-menu-footer">
+                        <div class="d-flex justify-content-between mb-1">
+                            <h6 class="font-weight-bolder mb-0">Total:</h6>
+                            <h6 class="ipsubtotal text-primary font-weight-bolder mb-0">$</h6>
+                        </div><a  class="btn btn-primary btn-block" href="{{ route('login') }}">Checkout</a>
+                    </li>  
+                    @endguest                              
                 </ul>
             </li>
             <li class="nav-item dropdown dropdown-notification mr-25"><a class="nav-link" href="javascript:void(0);" data-toggle="dropdown"><i class="ficon" data-feather="bell"></i><span class="badge badge-pill badge-danger badge-up">5</span></a>

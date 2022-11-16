@@ -3,9 +3,6 @@ jQuery(document).ready(function(){
     quantity();
     cartshow();
     cartcount();
-    
-    
-    
 
     function quantity(){
 
@@ -26,15 +23,18 @@ jQuery(document).ready(function(){
             url: "/cart/countqnt",
             dataType: "JSON",
             success: function (response) { 
-
+               
+                // if(response.status==success){
                     jQuery('.subtotal').text(response.totalamount);
-                
+                    jQuery('.ipsubtotal').text(response.totalamount); 
+                // }
+                // if(response.ip_status==success){
+                //     console.log(response.totalamount);
+                //     jQuery('.ipsubtotal').text(response.totalamount); 
+                // }    
             }
         });
-
     }
-
-
     function cartshow(){
         $.ajax({
             type: "GET",
@@ -54,14 +54,11 @@ jQuery(document).ready(function(){
 
     $('.addtocart').click(function (e) { 
         e.preventDefault();
-       
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
-      
         var product_id =jQuery(this).val();
         //    alert(product_id);
         $.ajax({
@@ -74,6 +71,10 @@ jQuery(document).ready(function(){
                 }
                 else{
                     // alert(response.cartcount) ;
+                    toastr.success('Added Item In Your Cart 🛒');
+                    location.reload();
+                }
+                if(response.new_status=='success'){
                     toastr.success('Added Item In Your Cart 🛒');
                     location.reload();
                 }
@@ -147,10 +148,7 @@ jQuery(document).ready(function(){
                     $('.pricetotal'+id).text(response.price);
                     cartcount();
                     // location.reload(); 
-                    
-
-                }
-                             
+                }                
             }
         });
     });
@@ -191,8 +189,6 @@ jQuery(document).ready(function(){
                     $('.deliverycharge').text(response.charge);
                     $('.payble').text(total);
                     // $('.user_amount').val('asraf');
-                    
-                    
                    
                 }
                 else{     
@@ -216,10 +212,7 @@ jQuery(document).ready(function(){
             dataType: "JSON",
             success: function (response) {
                 toastr.success(response.success); 
-                location.reload();
-                
-                
-                
+                location.reload(); 
             }
         });
     })

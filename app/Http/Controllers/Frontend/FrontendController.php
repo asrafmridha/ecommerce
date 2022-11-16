@@ -123,8 +123,10 @@ class FrontendController extends Controller
     //     $allSessions = session()->();
     //     dd($allSessions);
     // }
-    
 
-  
-  
+    public function ip_address(){
+        
+        $method1= request()->ip();
+        echo $method1;
+    }
 }

@@ -1,3 +1,7 @@
+@section('title')
+    ecommerce
+@endsection
+
 <div class="app-content content ecommerce-application">
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
@@ -108,8 +112,7 @@
                                             @else
                                                 <li class="ratings-list-item"><i data-feather="star" class="unfilled-star"></i>
                                             @endif
-                                        @endfor 
-                                                                            
+                                        @endfor                                 
                                     </ul>
                                 </div>
                                 <div>
@@ -145,13 +148,7 @@
                             </a> --}}
                         </div>
                     </div>
-                @endforeach
-                   
-                    
-                    
-                    
-                 
-                    
+                @endforeach               
                 </section>
                 <!-- E-commerce Products Ends -->
 

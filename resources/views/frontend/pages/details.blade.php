@@ -45,7 +45,7 @@
                             <div class="row my-2">
                                 <div class="col-12 col-md-5 d-flex align-items-center justify-content-center mb-2 mb-md-0">
                                     <div class="d-flex align-items-center justify-content-center">
-                                        <img src="{{ asset('frontend') }}/app-assets/images/pages/eCommerce/1.png" class="img-fluid product-img" alt="product image" />
+                                        <img width="300px" height="200px" src="{{ asset('uploads/product/'.$product->image) }}" alt="product image" />
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-7">
